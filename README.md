@@ -1,10 +1,12 @@
+# Astar Community Tutorials
+
 Welcome to the Astar Community Tutorials (ACT)!
 
 This repository is dedicated to guides created by community members for users or builders interested by Astar Network and its ecosystem. 
 
 Guides are classified by category below.
 
-**User guides**
+## User guides
 
 - Wallets
     - Guide #1
@@ -16,7 +18,7 @@ Guides are classified by category below.
 - DEX
 - CEX
 
-**Builder guides**
+## Builder guides
 
 - Nodes
     - Guide #5
