@@ -103,15 +103,186 @@ There are several methods to set up an RPC endpoint. In this tutorial, we will c
 ![Create new app](images/Alchemy_new_app.png "Alchemy")
 3. Confirm and record the 'API Key' and 'HTTPS' of the created app.
 ![Connect to Alchemy](images/apikey.png "Alchemy")
-
-[!CAUTION] 
-The information in the image is already invalid, and this is just a sample. 
+**Note:** The information in the image is already invalid, and this is just a sample. 
 
 ## Setup zkEVM RPC Node
 
+The Astar zkEVM RPC node will launch the following 5 containers:
+
+* zkevm-rpc (zkevm-node image)
+* zkevm-sync (zkevm-node image)
+* zkevm-state-db (PostgreSQL image)
+* zkevm-pool-db (PostgreSQL image)
+* zkevm-prover (zkevm-prover image)
+
+As mentioned earlier, at the time of writing this tutorial, the procedures are based on the assumption of operating on the zKatana testnet.
+
+### Setup Container
+Create directories for configuration, installation, and data.
+Assumes the shell is being run as a regular user.
+
+```bash
+$ sudo mkdir -p /etc/zkevm/{install,config} && sudo chown -R $USER:$USER /etc/zkevm
+$ sudo mkdir -p /var/lib/zkevm/{statedb,pooldb} && sudo chown -R $USER:$USER /var/lib/zkevm/
+```
+
+Set local variables. (Add to .profile or .bashrc, etc.)
+
+```bash
+# define installation and config path
+ZKEVM_NET=testnet
+ZKEVM_DIR=/etc/zkevm/install
+ZKEVM_CONFIG_DIR=/etc/zkevm/config
+```
+
+Download and extract the **zkatana.tar.gz** (setup file archive).
+
+```bash
+$ wget https://shared-assets.astar.network/files/zkevm/zkatana/zkatana.tar.gz
+$ tar -xf zkatana.tar.gz -C $ZKEVM_DIR && rm zkatana.tar.gz
+```
+
+Copy the env file and edit the L1 RPC URL. Here, specify the value of **'HTTPS'** created in Alchemy.
+
+```bash
+$ cp $ZKEVM_DIR/$ZKEVM_NET/example.env $ZKEVM_CONFIG_DIR/.env
+$ nano $ZKEVM_CONFIG_DIR/.env
+```
+
+```bash
+# Use your own Sepolia RPC URL here!!
+ZKEVM_NODE_ETHERMAN_URL = "<Insert the value of 'HTTPS' created in Alchemy here.>"
+```
+
+Next, edit the node configuration file. Here again, specify the value of **'HTTPS'** created in Alchemy.
+
+```bash
+$ nano $ZKEVM_DIR/$ZKEVM_NET/config/environments/$ZKEVM_NET/node.config.toml
+```
+
+```bash
+[Etherman]
+# Set your own Sepolia RPC URL
+URL = "<Insert the value of 'HTTPS' created in Alchemy here.>"
+```
+
+Start the containers.
+
+```bash
+$ sudo docker compose --env-file $ZKEVM_CONFIG_DIR/.env -f $ZKEVM_DIR/$ZKEVM_NET/docker-compose.yml up -d
+[+] Building 0.0s (0/0)                                                                                  docker:default
+[+] Running 6/6
+ ✔ Network zkevm             Created            
+ ✔ Container zkevm-pool-db   Healthy                                                                                           
+ ✔ Container zkevm-state-db Healthy                                                                                            
+ ✔ Container zkevm-sync      Started                                                                                            
+ ✔ Container zkevm-prover    Started                                                                                            
+ ✔ Container zkevm-sync      Started                                                                                            
+ ✔ Container zkevm-prover    Started                                                                                            
+ ✔ Container zkevm-rpc       Started
+```
+
+Verify that all containers are running. The following command is formatted for readability, but simply entering `sudo docker ps` is also acceptable. If the **STATUS** for each container is **Up** then they are running.
+
+```bash
+$ sudo docker ps -a --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+NAMES            STATUS                    PORTS
+zkevm-rpc        Up 17 minutes             0.0.0.0:8545->8545/tcp, :::8545->8545/tcp, 8123/tcp, 0.0.0.0:9091->9091/tcp, :::9091->9091/tcp
+zkevm-prover     Up 17 minutes             0.0.0.0:50061->50061/tcp, :::50061->50061/tcp, 0.0.0.0:50071->50071/tcp, :::50071->50071/tcp
+zkevm-sync       Up 17 minutes             8123/tcp, 0.0.0.0:9092->9091/tcp, :::9092->9091/tcp
+zkevm-state-db   Up 17 minutes (healthy)   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp
+zkevm-pool-db    Up 17 minutes (healthy)   0.0.0.0:5433->5432/tcp, :::5433->5432/tcp
+```
+
+From this output, you can see that the **zkevm-rpc** container is listening as the Astar zkEVM RPC node. It is operating on port 8545.
+
+### Test RPC requests
+
+**Test Sample1: Get the chain Id**
+
+```bash
+$ curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "eth_chainId", "params": []}' http://localhost:8545
+```
+
+**Expected response**
+
+```bash
+{"jsonrpc":"2.0","id":1,"result":"0x133e40"}
+```
+
+**Test Sample2: Get the latest block**
+
+```bash
+$ curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method":"eth_getBlockByNumber", "params":["latest", false]}' http://localhost:8545
+```
+
+**Expected response**
+
+```bash
+{"jsonrpc":"2.0","id":1,"result":{"parentHash":"0xf4cf938c5cffdd493bf677831f28b114c36b48d5e09834d091c07005c6fe4461","sha3Uncles":"0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347","miner":"0xde29a1693c7fbdb0917d2d1b10eecf877e03cc8a","stateRoot":"0x8ae41066e82e21ca1e4b256338ef39fa8ad3e2f6dc55c4bbcb48f9930340b4a1","transactionsRoot":"0xb00ab663744adc2a96b9ab688b1a460477d2b3d2e95a064a978643203bdb5387","receiptsRoot":"0x0a8ac4b7db33b587f6a30bb15fd9ff38eda8eb6fbdc96ad20e8c2cd3ea779abd","logsBloom":"0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000","difficulty":"0x0","totalDifficulty":"0x0","size":"0x495","number":"0x25ef","gasLimit":"0x1c9c380","gasUsed":"0x15c4a8","timestamp":"0x6535042b","extraData":"0x","mixHash":"0x0000000000000000000000000000000000000000000000000000000000000000","nonce":"0x0000000000000000","hash":"0xc3425d64a79a51e9407165745f1e0c1671a44bdd57c1fb80cca02d783978e754","transactions":["0xf1fde0ef379af799fd185addadd008ef593997c92d7cbfeec8e1228d61aecbbf"],"uncles":[]}}
+```
+
+Upon confirming the expected output for the test as outlined above, you can verify that the RPC node is correctly launched.
+
+## Maintenance/Troublechute
+
+### Stop the containers
+
+```bash
+$ sudo docker compose --env-file $ZKEVM_CONFIG_DIR/.env -f $ZKEVM_DIR/$ZKEVM_NET/docker-compose.yml down
+[+] Running 6/6
+ ✔ Container zkevm-rpc       Removed                                                                                            
+ ✔ Container zkevm-prover    Removed                                                                                            
+ ✔ Container zkevm-sync      Removed                                                                                            
+ ✔ Container zkevm-pool-db   Removed                                                                                            
+ ✔ Container zkevm-state-db  Removed                                                                                            
+ ✔ Network zkevm             Removed
+```
+
+
+### Check the logs
+
+If it's not starting correctly, encountering errors during a curl check, etc., let's check the logs. The following command views the logs for the **zkevm-rpc** container:
+
+
+```bash
+$ sudo docker logs -fn30 zkevm-rpc
+```
+
 ## Advanced
 
-## Troublechute
+### Enable if you want to exploit metrics from nodes
+
+Edit the node configuration file.
+
+```bash
+$ nano $ZKEVM_DIR/$ZKEVM_NET/config/environments/$ZKEVM_NET/node.config.toml
+```
+
+```bash
+[Metrics]
+Enabled = true
+```
+You will need to restart the containers after making configuration changes.
+
+```bash
+$ sudo docker compose --env-file $ZKEVM_CONFIG_DIR/.env -f $ZKEVM_DIR/$ZKEVM_NET/docker-compose.yml up -d zkevm-rpc
+```
+
+
+### Enable tracing
+
+To enable tracing features (debug and txpool modules) on the RPC, add the following options( _--http.api=eth,net,debug,zkevm,txpool,web3_ ) to the **zkevm-rpc** container in the docker-compose.yml file:
+
+```
+- "/app/zkevm-node run --http.api=eth,net,debug,zkevm,txpool,web3 --network custom --custom-network-file /app/genesis.json --cfg /app/config.toml --components rpc"
+```
+
+You will need to restart the containers after making configuration changes.
+
+```bash
+$ sudo docker compose --env-file $ZKEVM_CONFIG_DIR/.env -f $ZKEVM_DIR/$ZKEVM_NET/docker-compose.yml up -d zkevm-rpc
+```
 
 ## References
 
