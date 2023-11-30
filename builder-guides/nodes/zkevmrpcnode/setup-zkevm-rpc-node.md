@@ -103,6 +103,7 @@ There are several methods to set up an RPC endpoint. In this tutorial, we will c
 ![Create new app](images/Alchemy_new_app.png "Alchemy")
 3. Confirm and record the 'API Key' and 'HTTPS' of the created app.
 ![Connect to Alchemy](images/apikey.png "Alchemy")
+
 **Note:** The information in the image is already invalid, and this is just a sample. 
 
 ## Setup zkEVM RPC Node
@@ -194,7 +195,7 @@ zkevm-state-db   Up 17 minutes (healthy)   0.0.0.0:5432->5432/tcp, :::5432->5432
 zkevm-pool-db    Up 17 minutes (healthy)   0.0.0.0:5433->5432/tcp, :::5433->5432/tcp
 ```
 
-From this output, you can see that the **zkevm-rpc** container is listening as the Astar zkEVM RPC node. It is operating on port 8545.
+From this output, you can see that the **zkevm-rpc** container is listening as the Astar zkEVM RPC node. It is operating on port **8545**.
 
 ### Test RPC requests
 
@@ -284,9 +285,22 @@ You will need to restart the containers after making configuration changes.
 $ sudo docker compose --env-file $ZKEVM_CONFIG_DIR/.env -f $ZKEVM_DIR/$ZKEVM_NET/docker-compose.yml up -d zkevm-rpc
 ```
 
+### Access from outside
+
+To make a RPC endpoint URL available from outside, it is recommended to add a HTTP server. You can refer to this section to install an [nginx server](https://docs.astar.network/docs/build/nodes/archive-node/nginx/).
+
 ## References
 
+* [Setup Astar zkEVM Permissionless RPC Node](https://docs.astar.network/docs/build/zkEVM/zk-node/setup-rpc-node/)
+* [Create a bootable USB stick with Rufus on Windows](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview)
+* [balenaEtcher](https://etcher.balena.io/)
+* [Ubuntu Downloads](https://ubuntu.com/download/alternative-downloads)
+* [Get Started with Docker](https://www.docker.com/get-started)
+* [Overview of installing Docker Compose](https://docs.docker.com/compose/install/)
+* [Nginx Server](https://docs.astar.network/docs/build/nodes/archive-node/nginx/)
 
 
-## Author Introduction
+## Author/Contact Information
+This guide was written by **tksarah**, Astar ecosystem agent. If you have questions, contact me on telegram (https://t.me/tksarah0822).
 
+**tksarah:** Astar Network Official Ambassador@Tokyo / web3 Technacal Marketing / IT Infra TechLead / Tech Instructor / School Teacher
