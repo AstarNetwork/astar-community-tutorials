@@ -9,7 +9,7 @@ This tutorial provides more detailed information based on the following document
 
 **Note:** As of the writing of this tutorial, Astar zkEVM has a deployed testnet, and it is assumed to be operational on the zKatana testnet for the purpose of this guide.
 
-**Notes:** The intended audience for this tutorial includes engineers with at least basic knowledge of ICT and proficiency in Linux/Unix shell and fundamental operations.
+**Note:** The intended audience for this tutorial includes engineers with at least basic knowledge of ICT and proficiency in Linux/Unix shell and fundamental operations.
 
 ## Prerequisites
 
@@ -94,14 +94,14 @@ Docker Compose version v2.23.0
 ```
 
 ### Preparing Ethereum RPC node
-To run the Astar zkEVM RPC node, an Ethereum RPC node is required. The documentation outlines the process using a public RPC endpoint ('https://eth-sepolia-public.unifra.io'), but in this case, there is a rate limit, which may lead to improper synchronization of the node. (Upon actual setup and reviewing the logs, frequent errors were observed.)
+To run the Astar zkEVM RPC node, an Ethereum RPC node is required. [Setup Astar zkEVM Permissionless RPC Node](https://docs.astar.network/docs/build/zkEVM/zk-node/setup-rpc-node/) outlines the process using a public RPC endpoint ('https://eth-sepolia-public.unifra.io'), but in this case, there is a rate limit, which may lead to improper synchronization of the node. Upon actual setup and reviewing the logs, frequent errors were observed.
 
 There are several methods to set up an RPC endpoint. In this tutorial, we will create a test endpoint using **[Alchemy](https://www.alchemy.com/)** and specify it for the Astar zkEVM RPC node. While we won't provide detailed instructions on the creation process, we will include a brief outline of the simple procedure.
 
 1. Create an Alchemy account.
 2. From the 'Apps' menu, select 'Create new app' and fill in the required details.
 ![Create new app](images/Alchemy_new_app.png "Alchemy")
-3. Confirm and record the 'API Key' and 'HTTPS' of the created app.
+3. Confirm and record the **'API Key'** and **'HTTPS'** of the created app.
 ![Connect to Alchemy](images/apikey.png "Alchemy")
 
 **Note:** The information in the image is already invalid, and this is just a sample. 
@@ -116,7 +116,7 @@ The Astar zkEVM RPC node will launch the following 5 containers:
 * zkevm-pool-db (PostgreSQL image)
 * zkevm-prover (zkevm-prover image)
 
-As mentioned earlier, at the time of writing this tutorial, the procedures are based on the assumption of operating on the zKatana testnet.
+As mentioned earlier, at the time of writing this tutorial, the procedures are based on the assumption of operating on the **zKatana** testnet.
 
 ### Setup Container
 Create directories for configuration, installation, and data.
@@ -171,7 +171,7 @@ Start the containers.
 
 ```bash
 $ sudo docker compose --env-file $ZKEVM_CONFIG_DIR/.env -f $ZKEVM_DIR/$ZKEVM_NET/docker-compose.yml up -d
-[+] Building 0.0s (0/0)                                                                                  docker:default
+[+] Building 0.0s (0/0)                                                                                  
 [+] Running 6/6
  ✔ Network zkevm             Created            
  ✔ Container zkevm-pool-db   Healthy                                                                                           
@@ -210,6 +210,9 @@ $ curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method
 ```bash
 {"jsonrpc":"2.0","id":1,"result":"0x133e40"}
 ```
+
+If you encounter an error like `curl: (56) Recv failure: Connection reset by peer`,' it's possible that the RPC container is not yet ready. Please wait for a moment and try running it again."
+
 
 **Test Sample2: Get the latest block**
 
@@ -301,6 +304,6 @@ To make a RPC endpoint URL available from outside, it is recommended to add a HT
 
 
 ## Author/Contact Information
-This guide was written by **tksarah**, Astar ecosystem agent. If you have questions, contact me on telegram (https://t.me/tksarah0822).
+This guide was written by **tksarah**, Astar ecosystem agent. If you have questions, contact me on [telegram](https://t.me/tksarah0822).
 
 **tksarah:** Astar Network Official Ambassador@Tokyo / web3 Technacal Marketing / IT Infra TechLead / Tech Instructor / School Teacher
