@@ -2,7 +2,7 @@
 
 Welcome to Astar Community Tutorials GitHub Repo.
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
 ## How to contribute to Astar Community Tutorials using a local instance of the Docusaurus engine
 
@@ -19,13 +19,13 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
       - lists
       - hyperlinks
   
-  - Method 2: Make sure `yarn` exists as a command in your terminal or VS Code and Github Desktop is installed. All the `git` operations described below can also be found within the desktop application.
+  - Method 2: Make sure `yarn` exists as a command in your terminal or VS Code and Github Desktop is installed. All the `git` operations described below can also be found within the menu of the desktop application, and common operations are clearly visible on launch.
 
 ### Setup: First time only
 
   - Clone repo `git clone https://github.com/astarnetwork/astar-community-tutorials`
   - Install dependencies by running `yarn` (`cd astar-community-tutorials` , `yarn` )
-  - `yarn start` - spin up a realtime website that updates dynamically based on changes to the code.
+  - `yarn start` - spin up a realtime website that updates dynamically based on your changes to the code.
 
 ### New document / Modify existing docment --> Submit a PR
   
@@ -40,13 +40,12 @@ This website is built using [Docusaurus 2](https://docusaurus.io/), a modern sta
       - When you’re happy with it, ensure `yarn build` runs without errors
   - PR and staging environment
       - Commit your changes and push the new branch up to Github (`git add .` and `git commit`, `git push -u origin feat/your-new-branch`)
-      - Create New PR on Github (https://github.com/astarnetwork/astar-community-tutorials)
-      - Once PR is up, **CICD** will automatically build you a unique staging link you can see progress of this on Actions tab in Github
-      - Get feedback from team
+      - Create a new PR on Github (https://github.com/astarnetwork/astar-community-tutorials)
+      - Wait for feedback from the ACT team
 
 ### Working with images
 
-  - Please import and use the `<Figure/>` tag instead of `![image]` as this enables smoother translation of docs to other languages (automatic reference to original images, no need to copy images to translated subfolders) and some styling is applied automatically, such as line breaks.
+  - Please import and use the `<Figure/>` tag instead of `![image]` as this enables smoother translation of docs to other languages (automatic reference to original images, no need to copy images to translated subfolders) and automatically applies some styling such as line breaks.
     
     - Example - as seen in [Astar Docs](https://github.com/AstarNetwork/astar-docs/blob/d530139ca7a5ab034a783981d313542e02fdfb54/docs/about/token-economics/inflationary-model.md):
       
