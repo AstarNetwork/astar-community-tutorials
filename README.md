@@ -19,7 +19,7 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
       - lists
       - hyperlinks
   
-  - Method 2: Make sure `yarn` exists as a command in your terminal or VS Code and Github Desktop is installed. All the `git` operations described below can also be found within the desktop application.
+  - Method 2: Make sure `yarn` exists as a command in your terminal or VS Code and Github Desktop is installed. All the `git` operations described below can also be found within the menu of the desktop application, and common operations are clearly visible on launch.
 
 ### Setup: First time only
 
