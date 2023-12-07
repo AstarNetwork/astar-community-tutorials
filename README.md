@@ -2,7 +2,7 @@
 
 Welcome to Astar Community Tutorials GitHub Repo.
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
 ## How to contribute to Astar Community Tutorials using a local instance of the Docusaurus engine
 
