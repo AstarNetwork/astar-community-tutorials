@@ -40,9 +40,8 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
       - When you’re happy with it, ensure `yarn build` runs without errors
   - PR and staging environment
       - Commit your changes and push the new branch up to Github (`git add .` and `git commit`, `git push -u origin feat/your-new-branch`)
-      - Create New PR on Github (https://github.com/astarnetwork/astar-community-tutorials)
-      - Once PR is up, **CICD** will automatically build you a unique staging link you can see progress of this on Actions tab in Github
-      - Get feedback from team
+      - Create a new PR on Github (https://github.com/astarnetwork/astar-community-tutorials)
+      - Wait for feedback from the ACT team
 
 ### Working with images
 
