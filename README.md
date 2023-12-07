@@ -25,7 +25,7 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 
   - Clone repo `git clone https://github.com/astarnetwork/astar-community-tutorials`
   - Install dependencies by running `yarn` (`cd astar-community-tutorials` , `yarn` )
-  - `yarn start` - spin up a realtime website that updates dynamically based on changes to the code.
+  - `yarn start` - spin up a realtime website that updates dynamically based on your changes to the code.
 
 ### New document / Modify existing docment --> Submit a PR
   
@@ -46,7 +46,7 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 
 ### Working with images
 
-  - Please import and use the `<Figure/>` tag instead of `![image]` as this enables smoother translation of docs to other languages (automatic reference to original images, no need to copy images to translated subfolders) and some styling is applied automatically, such as line breaks.
+  - Please import and use the `<Figure/>` tag instead of `![image]` as this enables smoother translation of docs to other languages (automatic reference to original images, no need to copy images to translated subfolders) and automatically applies some styling such as line breaks.
     
     - Example - as seen in [Astar Docs](https://github.com/AstarNetwork/astar-docs/blob/d530139ca7a5ab034a783981d313542e02fdfb54/docs/about/token-economics/inflationary-model.md):
       
