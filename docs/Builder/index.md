@@ -4,7 +4,7 @@ import Figure from '/src/components/figure'
 
 <Figure caption="Documentation of all the resources builders need in order to start testing, deploying and interacting with smart contracts on the Astar network" src={require('/docs/Builder/img/build.png').default} width="1200px" />
 
-## Why build on Astar?  
+## Why build on Astar?
 
 Astar is an interoperable blockchain platform for the Polkadot and Ethereum ecosystems supporting both Wasm and EVM smart contracts. Astar provides native access to Polkadot and Ethereum through its parachain slot and Layer 2 scaling solution, while also offering bridges to other major blockchain ecosystems.
 
