@@ -8,5 +8,5 @@ Astar is an interoperable blockchain platform for Polkadot and Ethereum ecosyste
 
 ## Overview of Astar Community Tutorials
 
-- [**Build**](/docs/builder-guides) - Provides the resources you need to start building, testing, deploying, and interacting with smart contracts on Astar network.
+- [**Build**](/docs/Builder) - Provides the resources you need to start building, testing, deploying, and interacting with smart contracts on Astar network.
 - [**Docs Integration Request**](https://github.com/AstarNetwork/astar-community-tutorials/blob/main/docs-integration-request.md) - Provides information about how to make a documentation integration request for this repository. 

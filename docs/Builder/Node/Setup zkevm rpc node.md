@@ -1,4 +1,10 @@
-# Building Astar zkEVM Permissionless RPC Node Tutorial
+---
+sidebar_position: 1
+title: Building Astar zkEVM Permissionless RPC Node Tutorial
+sidebar_label: Setup zkEVM RPC Node
+---
+
+import Figure from "/src/components/figure"
 
 ## Overview
 
@@ -42,8 +48,8 @@ Here is a summary of the procedure:
 1. Download balenaEtcher.
 2. Download the Ubuntu ISO image.
 3. Use balenaEtcher to set up the ISO image on a USB drive.
-![Create USB installation media](images/balena0.png "balenaEtcher")
-![Create USB installation media](images/balena1.png "balenaEtcher")
+<Figure src={require('/docs/Builder/Node/img/balena0.png').default } width="100%" /> 
+<Figure src={require('/docs/Builder/Node/img/balena1.png').default } width="100%" /> 
 4. Insert the USB drive into the machine where the node will be set up and boot from it.
 5. Perform the Ubuntu installation setup.
 
@@ -100,9 +106,9 @@ There are several methods to set up an RPC endpoint. In this tutorial, we will c
 
 1. Create an Alchemy account.
 2. From the 'Apps' menu, select 'Create new app' and fill in the required details.
-![Create new app](images/Alchemy_new_app.png "Alchemy")
+<Figure src={require('/docs/Builder/Node/img/Alchemy_new_app.png').default } width="100%" /> 
 3. Confirm and record the **'API Key'** and **'HTTPS'** of the created app.
-![Connect to Alchemy](images/apikey.png "Alchemy")
+<Figure src={require('/docs/Builder/Node/img/apikey.png').default } width="100%" /> 
 
 **Note:** The information in the image is already invalid, and this is just a sample. 
 
