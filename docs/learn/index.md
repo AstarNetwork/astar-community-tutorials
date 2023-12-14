@@ -3,7 +3,7 @@ Greetings! We are delighted to welcome you to the educational segment of Astar C
 
 Whether you're an aspiring developer or a newcomer to the world of blockchain, this section provides comprehensive insights into the inner workings of Astar network. Starting from the basics such as accounts, we delve into the intricate protocols that fuel the functionality of Astar.
 
-To expand your knowledge about building applications or utilizing various tools on Astar, we recommend exploring the [builder guides](/docs/builder-guides) section. 
+To expand your knowledge about building applications or utilizing various tools on Astar, we recommend exploring the [builder guides](/docs/Builder) section. 
 
 ## Foundations
 [About Astar](/docs/learn/astar)

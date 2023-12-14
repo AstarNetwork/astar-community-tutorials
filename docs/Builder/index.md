@@ -2,7 +2,7 @@ import Figure from '/src/components/figure'
 
 # Build on Astar
 
-<Figure caption="Documentation of all the resources builders need in order to start testing, deploying and interacting with smart contracts on the Astar network" src={require('/docs/builder-guides/img/build.png').default} width="1200px" />
+<Figure caption="Documentation of all the resources builders need in order to start testing, deploying and interacting with smart contracts on the Astar network" src={require('/docs/Builder/img/build.png').default} width="1200px" />
 
 ## Why build on Astar?
 

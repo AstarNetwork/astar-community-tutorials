@@ -26,7 +26,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: <Translate>Build</Translate>,
-    link: '/docs/builder-guides/',
+    link: '/docs/Builder/',
     iconClass: 'wrench',
     description: (
       <>

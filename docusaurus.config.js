@@ -79,7 +79,7 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'builder-guides/index',
+            docId: 'Builder/index',
             position: 'left',
             label: 'Start Building',
           },
