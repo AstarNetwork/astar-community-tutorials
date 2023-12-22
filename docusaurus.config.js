@@ -8,15 +8,15 @@ const katex = require('rehype-katex');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Astar Community Tutorials',
-  tagline: 'ACT is a community-maintained repository of useful information about Astar Network',
-  url: 'https://docs.astar.network',
+  title: 'ink! DevHub',
+  tagline: 'The official ink!Hub documentation portal',
+  url: 'https://docs.inkdevhub.net',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
-  favicon: 'img/fav.png',
-  organizationName: 'AstarNetwork', // Usually your GitHub org/user name.
-  projectName: 'astar-community-tutorials', // Usually your repo name.
+  favicon: 'img/wreng.svg',
+  organizationName: 'ink! DevHub', // Usually your GitHub org/user name.
+  projectName: 'inkdevhub-docs', // Usually your repo name.
   plugins: ['docusaurus-plugin-sass'],
   stylesheets: [
     {
@@ -27,7 +27,7 @@ const config = {
       crossorigin: 'anonymous',
     },
   ],
-  clientModules: [require.resolve('./static/astarAi.js')],
+  clientModules: [],
 
   presets: [
     [
@@ -37,14 +37,14 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/AstarNetwork/astar-community-tutorials/tree/main/',
+          editUrl: 'https://github.com/inkdevhub/inkdevhub-docs',
           remarkPlugins: [math],
           rehypePlugins: [katex],
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl: 'https://github.com/AstarNetwork/astar-community-tutorials/tree/main/',
+          editUrl: 'https://github.com/inkdevhub/inkdevhub-docs',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.scss'),
@@ -65,10 +65,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Astar Community Tutorials',
+        title: 'ink! DevHub',
         logo: {
-          alt: 'ACT',
-          src: 'img/astar-logo.svg',
+          alt: 'ink!dev',
+          src: 'img/wrench.svg',
         },
         items: [
           {
@@ -79,26 +79,16 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'Builder/index',
+            docId: 'build/index',
             position: 'left',
             label: 'Start Building',
-          },
-          {
-            to: 'https://theastarbulletin.news',
-            label: 'Medium',
-            position: 'left',
-          },
-          {
-            to: 'https://www.youtube.com/channel/UC36JgEF6gqatVSK9xlzzrvQ',
-            label: 'Youtube',
-            position: 'left',
           },
           {
             type: 'localeDropdown',
             position: 'right',
           },
           {
-            href: 'https://github.com/AstarNetwork/astar-community-tutorials',
+            href: 'https://github.com/inkdevhub/inkdevhub-docs',
             label: 'GitHub',
             position: 'right',
           },
@@ -115,35 +105,9 @@ const config = {
                 to: '/docs/getting-started',
               },
             ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Discord',
-                href: 'https://discord.gg/astarnetwork',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/AstarNetwork',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: 'https://astar.network/blog',
-              },
-              {
-                label: 'Astar Network GitHub',
-                href: 'https://github.com/AstarNetwork',
-              },
-            ],
-          },
+          },       
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Astar Developers Hub.`,
+        copyright: `Copyright © ${new Date().getFullYear()} ink! Developers Hub`,
       },
       prism: {
         theme: lightCodeTheme,

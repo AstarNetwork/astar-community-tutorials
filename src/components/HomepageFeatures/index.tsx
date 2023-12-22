@@ -13,26 +13,14 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   
   {
-    title: <Translate>Learn About Astar Network</Translate>,
-    link: '/docs/learn',
-    iconClass: 'docs',
-    description: (
-      <>
-        <Translate>
-        Explains our foundations and provides comprehensive insights into the inner workings of Astar network. 
-        </Translate>
-      </>
-    ),
-  },
-  {
     title: <Translate>Build</Translate>,
-    link: '/docs/Builder/',
+    link: '/docs/build/',
     iconClass: 'wrench',
     description: (
       <>
         <Translate>
           Find all the resources you need to start testing, deploying,
-          and interacting with smart contracts on Astar networks.
+          and interacting with smart contracts using ink!
         </Translate>
       </>
     ),

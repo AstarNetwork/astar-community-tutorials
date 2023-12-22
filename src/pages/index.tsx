@@ -28,7 +28,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="ACT - Astar Community Tutorials - User Guides and Developer Tutorials.">
+      description="The ink!Hub Official Documentation Portal">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

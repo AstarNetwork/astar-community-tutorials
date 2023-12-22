@@ -1,10 +1,10 @@
 # Website
 
-Welcome to Astar Community Tutorials GitHub Repo.
+Welcome to the ink! developers documentation portal repo.
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
-## How to contribute to Astar Community Tutorials using a local instance of the Docusaurus engine
+## How to contribute to ink!Hub documentation using a local instance of the Docusaurus engine
 
 ### Prereqs
 
@@ -45,9 +45,9 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 
 ### Working with images
 
-  - Please import and use the `<Figure/>` tag instead of `![image]` as this enables smoother translation of docs to other languages (automatic reference to original images, no need to copy images to translated subfolders) and automatically applies some styling such as line breaks.
+  - Kindly import and use the `<Figure/>` tag instead of `![image]` as this enables smoother translation of docs to other languages (automatic reference to original images, no need to copy images to translated subfolders) and it automatically applies some styling such as line breaks.
     
-    - Example - as seen in [Astar Docs](https://github.com/AstarNetwork/astar-docs/blob/d530139ca7a5ab034a783981d313542e02fdfb54/docs/about/token-economics/inflationary-model.md):
+    - Example - as seen in [Astar's Docs](https://github.com/AstarNetwork/astar-docs/blob/d530139ca7a5ab034a783981d313542e02fdfb54/docs/about/token-economics/inflationary-model.md):
       
       at top of file:
       ```
@@ -59,4 +59,4 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
       <Figure caption="Tokenomics Model" src={require('/docs/about/token-economics/img/tokenomics_1.png').default } width="100%" /> 
       ```
 
-    - Please use the absolute path to the image (e.g. `/docs/about/token-economics/img/tokenomics_1.png` instead of `img/tokenomics_1.png`
+    - Please use the absolute path to the image (e.g. `/docs/build/img/thispic.png` instead of `./img/thispic.png` as this faciliates i18n and ease of translation into other languages.
