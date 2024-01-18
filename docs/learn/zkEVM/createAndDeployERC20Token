@@ -1,20 +1,24 @@
-Create and Deploy an ERC-20 Token on Astar zkEVM
-Before we begin, it's important to note that we'll be deploying the token on the zkEVM Testnet. You can access comprehensive information about zkEVM in the Astar documentation: https://docs.astar.network/docs/build/zkEVM
-Network:
-To start, let's integrate the Testnet into our Metamask. You can find the necessary network details below or in the following guide https://docs.astar.network/docs/build/zkEVM/quickstart:
-Create deployer account
-For this tutorial, kindly generate a Test Wallet (avoid using your regular wallet) since we'll require the private key to programmatically deploy the contract through Hardhat. Always refrain from committing your private key to any public repository! Refer to this guide on obtaining your private key for Metamask: https://docs.astar.network/docs/build/zkEVM/smart-contracts/using-hardhat
-Faucet and Bridging
-Proceeding to the next stage involves bridging ETH from an ETH Testnet (Sepolia) to the zkEVM Testnet. Detailed information on this process can be found here: https://docs.astar.network/docs/build/zkEVM/bridge-to-zkevm/
-To acquire ETH Test Tokens, visit the faucets listed here https://docs.astar.network/docs/build/zkEVM/zkevm-faucet for a free distribution. I personally utilized this faucet: https://sepolia-faucet.pk910.de/.
-Create and Deploy Smart Contract
-Our ERC-20 token contract will be built using the OpenZeppelin library (https://docs.openzeppelin.com/), while the creation and deployment of this smart contract will be handled through Hardhat (https://hardhat.org/hardhat-runner/docs/getting-started#overview) .
-OpenZeppelin is renowned for secure smart contract development, providing standardized and audited contracts on platforms like Ethereum or Astar EVM/zkEVM. Hardhat, an EVM development environment, simplifies the entire development lifecycle with its built-in tasks, plugins, and robust developer tools.
-Please follow the guides in the links I have posted to get hardhat installed on your system (there is an offical extension for VSCode). I will be using VSCode as my Code editor.
-After you have installed it please run the following comand in your target folder to create a sample project with hardhat:
-npx hardhat init
-In this tutorial, opt for creating a JavaScript project and stick to the default choices for the remaining options. Following this, generate a .env file in your project's source directory, configured as follows. Ensure to include your private key, as it's necessary for the deployment process.
-To proceed, open the hardhat.config.js file and incorporate the following code:
+# Astar zkEVM FAQs
+# Create and Deploy an ERC-20 Token on Astar zkEVM
+
+Before we begin, it's important to note that we'll be deploying the token on the zkEVM Testnet. You can access comprehensive information about zkEVM in the Astar documentation: [zkEVM Documentation](https://docs.astar.network/docs/build/zkEVM)
+
+## Network Integration
+To start, integrate the Testnet into your Metamask. Refer to the necessary network details [here](https://docs.astar.network/docs/build/zkEVM/quickstart) or in the following guide.
+
+## Create Deployer Account
+Generate a Test Wallet for this tutorial, as we'll need the private key to deploy the contract programmatically through Hardhat. Avoid using your regular wallet, and never commit your private key to a public repository. [Guide](https://docs.astar.network/docs/build/zkEVM/smart-contracts/using-hardhat)
+
+## Faucet and Bridging
+Bridging ETH from an ETH Testnet (Sepolia) to the zkEVM Testnet is the next step. Details can be found [here](https://docs.astar.network/docs/build/zkEVM/bridge-to-zkevm/). Acquire ETH Test Tokens for free from the [faucet](https://docs.astar.network/docs/build/zkEVM/zkevm-faucet), such as [Sepolia Faucet](https://sepolia-faucet.pk910.de/).
+
+## Create and Deploy Smart Contract
+Our ERC-20 token contract leverages the OpenZeppelin library for secure smart contract development. Deployment is handled through Hardhat, a powerful development environment for Ethereum. Follow the guides mentioned in the provided links.
+
+## Hardhat Configuration
+Ensure Hardhat is configured correctly in the `hardhat.config.js` file. Set up network details, including RPC URL and account private key.
+
+```javascript
 require("dotenv").config();
 require("@nomicfoundation/hardhat-toolbox");
 
@@ -25,11 +29,12 @@ module.exports = {
     },
     networks: {
         zKatana: {
-        url: `https://rpc.zkatana.gelato.digital`,
-        accounts: [process.env.ACCOUNT_PRIVATE_KEY],
+            url: `https://rpc.zkatana.gelato.digital`,
+            accounts: [process.env.ACCOUNT_PRIVATE_KEY],
         },
     },
 };
+
 This code configures the Hardhat environment for EVM smart contract development. It loads environment variables from a .env file, specifies Solidity version, sets the artifact output path, and defines the test network named "zKatana" with a specific RPC URL and an account using the private key stored in the environment variable ACCOUNT_PRIVATE_KEY.
 Feel free to remove the Lock.sol file within the contracts folder. Subsequently, introduce a new file named Token.sol, containing the following code:
 // SPDX-License-Identifier: MIT
