@@ -1,4 +1,3 @@
-# Astar zkEVM FAQs
 # Create and Deploy an ERC-20 Token on Astar zkEVM
 
 Before we begin, it's important to note that we'll be deploying the token on the zkEVM Testnet. You can access comprehensive information about zkEVM in the Astar documentation: [zkEVM Documentation](https://docs.astar.network/docs/build/zkEVM)
