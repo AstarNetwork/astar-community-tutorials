@@ -159,5 +159,6 @@ In the upcoming guide, we’ll leverage the newly created token to establish a l
 
 ## Reference
 
-You can find the original guide here: https://medium.com/@sequaja.marco/launch-erc-20-token-on-astar-zkevm-8153576d3ac2
-Contact: Sequaja#3605 on discord 
+Explore the original guide at: Launch ERC-20 Token on Astar zkEVM
+
+Contact: For further assistance, reach out to Sequaja#3605 on Discord.
