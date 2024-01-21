@@ -1,11 +1,19 @@
-# An introduction to write Smart Contracts in Rust and Ink!
+---
+sidebar_position: 1
+title: Introduction to write Smart Contracts in Rust and Ink!
+sidebar_label: Introduction to Smart Contracts
+---
+
+import Figure from "/src/components/figure"
+
+# Introduction to write Smart Contracts in Rust and Ink!
 
 ## Overview
 This tutorial introduces :
- - how to write a first smart contract in Rust and Ink!,
- - the main macros used in Ink!,
- - how to build and deploy the smart contract on a Substrate Contracts Node, 
- - how to interact with the smart contract.
+ - How to write a first smart contract in Rust and Ink!,
+ - The main macros used in Ink!,
+ - How to build and deploy the smart contract on a Substrate Contracts Node, 
+ - How to interact with the smart contract.
 
 ## Prerequisites
 
@@ -419,7 +427,7 @@ After building the contract with the command `cargo contract build`, you will ha
  - incrementer.json: a JSON file that contains just the contract’s metadata, used by the tools to interact with your contract 
  - incrementer.contract: bundle with the combination of the metadata and the wasm code
 
-![artifacts.png](img/IntroductionToWriteInkSmartContract/artifacts.png)
+<Figure src={require('/docs/Builder/Wasm/img/IntroductionToWriteInkSmartContract/artifacts.png').default } width="100%" /> 
 
 Note: you can see the size of the contract. The default is to build the contract in debug which is useful for development because you can use the debug messages but you can see the size of size is 17.2K
 
@@ -454,7 +462,7 @@ You can replace it by your mnemonic phrase but it is not recommended to do it! c
 
 Here we can see `ExtrinsicSuccess` and `CodeStored` events and the code hash stored.
 
-![code_uploaded.png](img/IntroductionToWriteInkSmartContract/code_uploaded.png)
+<Figure src={require('/docs/Builder/Wasm/img/IntroductionToWriteInkSmartContract/code_uploaded.png').default } width="100%" /> 
 
 ### Instantiate the contract
 Use the command `cargo contract instantiate` to instantiate a new contract.
@@ -469,7 +477,7 @@ Here we use the constructor `new` with the value `3` as parameter.
 First, a dry run is done to estimate the gas required. Enter Y to submit the call. 
 Here we can see `ExtrinsicSuccess` and `Instantiated` events and the contract account.
 
-![contract_instantiated.png](img/IntroductionToWriteInkSmartContract/contract_instantiated.png)
+<Figure src={require('/docs/Builder/Wasm/img/IntroductionToWriteInkSmartContract/contract_instantiated.png').default } width="100%" /> 
 
 Note : If you instantiate the contract without uploading the code before, the system will automatically both of them.
 
@@ -482,7 +490,7 @@ cargo contract call --contract <<contract address>> --suri //Bob --message get
 
 Note : We call the `get` method and the current value is 3
 
-![get_value.png](img/IntroductionToWriteInkSmartContract/get_value.png)
+<Figure src={require('/docs/Builder/Wasm/img/IntroductionToWriteInkSmartContract/get_value.png').default } width="100%" /> 
 
 
 ### Interact with the contract - execute
@@ -496,7 +504,7 @@ cargo contract call --contract <<contract address>> --suri //Bob --message inc -
 Note : We call the method `inc` with the value `2` as parameter. 
 First, a dry run is done to estimate the gas required. Enter Y to submit the call. 
 
-![inc_value.png](img/IntroductionToWriteInkSmartContract/inc_value.png)
+<Figure src={require('/docs/Builder/Wasm/img/IntroductionToWriteInkSmartContract/inc_value.png').default } width="100%" /> 
 
 If you read again the value (method get) you will see the new value is 5.
 ```bash
@@ -523,8 +531,8 @@ For example:
 ```bash
 cargo contract call --contract <<contract address>> --suri //Bob --message inc --args 2 --execute
 ```
-![inc_value_debug_message.png](img/IntroductionToWriteInkSmartContract/inc_value_debug_message.png)
 
+<Figure src={require('/docs/Builder/Wasm/img/IntroductionToWriteInkSmartContract/inc_value_debug_message.png').default } width="100%" /> 
 
 ## Adding a custom event
 
@@ -566,7 +574,7 @@ Emit the `Incremented` event in the `inc` method
 
 Build and instantiate the new contract and call the `inc` method with the option `execute`.
 
-![inc_value_with_event.png](img/IntroductionToWriteInkSmartContract/inc_value_with_event.png)
+<Figure src={require('/docs/Builder/Wasm/img/IntroductionToWriteInkSmartContract/inc_value_with_event.png').default } width="100%" /> 
 
 Your custom event is emitted!
 
@@ -577,15 +585,15 @@ You can use the app https://contracts-ui.substrate.io/ to instantiate new contra
 
 Select the correct node (local node for us) 
 
-![contracts-ui-select-node.png](img/IntroductionToWriteInkSmartContract/contracts-ui-select-node.png)
+<Figure src={require('/docs/Builder/Wasm/img/IntroductionToWriteInkSmartContract/contracts-ui-select-node.png').default } width="50%" /> 
 
 Upload and Instantiate a new contract, select the contract bundle (incrementer.contract in our case) and follow the instructions.
 
-![contracts-ui-new-contract.png](img/IntroductionToWriteInkSmartContract/contracts-ui-new-contract.png) 
+<Figure src={require('/docs/Builder/Wasm/img/IntroductionToWriteInkSmartContract/contracts-ui-new-contract.png').default } width="100%" /> 
 
 And you will be able to interact with this contract 
 
-![contracts-ui-interact.png](img/IntroductionToWriteInkSmartContract/contracts-ui-interact.png)
+<Figure src={require('/docs/Builder/Wasm/img/IntroductionToWriteInkSmartContract/contracts-ui-interact.png').default } width="100%" /> 
 
 
 ## Conclusion
