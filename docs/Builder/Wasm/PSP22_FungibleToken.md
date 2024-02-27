@@ -1,10 +1,8 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 title: PSP22 - Fungible Token (ERC20 equivalent)
 sidebar_label: PSP22 - Fungible Token
 ---
-
-import Figure from "/src/components/figure"
 
 # PSP22 - Fungible Token (ERC20 equivalent)
 
