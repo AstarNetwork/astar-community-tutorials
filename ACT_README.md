@@ -49,4 +49,13 @@ Guides are classified by category below.
 
 </details>
 
+<details>
+<summary>zkEVM</summary>
+    
+- [Create and Deploy an ERC-20 Token on Astar zkEVM](https://github.com/AstarNetwork/astar-community-tutorials/blob/main/docs/learn/zkEVM/createAndDeployERC20Token.md)
+
+
+</details>
+
+
 Let us know if a guide contains errors or is out of date by creating an issue on this repo.
